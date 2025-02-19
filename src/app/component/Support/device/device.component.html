@@ -1,0 +1,321 @@
+<div class="col-12 row" style="display: flex;">
+  <mat-card class="trinta-card mb-25 bg-white border-none d-block w-100">
+      <mat-card-header>
+          <!-- Optional header content can go here -->
+      </mat-card-header>
+      <mat-card-content>
+          <div class="d-flex">
+              <!-- Start Date - End Date Section -->
+              <div class="col-3">       
+                   <mat-form-field class="w-100">
+                      <i-feather name="list"></i-feather>
+                      <mat-label>Enter a date range</mat-label>
+                      <mat-date-range-input [rangePicker]="picker">
+                          <input matStartDate placeholder="Start date">
+                          <input matEndDate placeholder="End date">
+                      </mat-date-range-input>
+                      <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+                      <mat-date-range-picker #picker></mat-date-range-picker>
+                  </mat-form-field>
+              </div>
+
+              <!-- Location Section -->
+              <div class="col-3">          
+                  <mat-form-field class="w-100">
+                      <mat-label>State</mat-label>
+                      <mat-select>
+                          <mat-option value="">None</mat-option>
+                          <mat-option *ngFor="let state of states" [value]="state">
+                              {{ state }}
+                          </mat-option>
+                      </mat-select>
+                  </mat-form-field>
+              </div>
+
+              <!-- Search Box Section -->
+              <div class="col-3">
+                  <div class="search-box position-relative">
+                      <input type="text" 
+                             class="input-search w-100 d-block border-none"  
+                             placeholder="Search here..">
+                      <button type="submit" class="search-btn bg-transparent p-0 border-none transition">
+                          <i-feather name="search"></i-feather>
+                      </button>
+                  </div>
+              </div>
+              <!-- Button Section with col-2 -->
+              <div class="col-2">
+                  <button mat-raised-button class="d-block w-100 text-center" color="primary">Submit</button>
+              </div>
+          </div>
+      </mat-card-content>
+  </mat-card>
+</div>
+
+<mat-card
+    class="trinta-card recent-orders-card mb-25 bg-white border-none d-block"
+>
+    <mat-card-header>
+        <mat-card-title>
+            <h5 class="mt-0 mb-0">
+                Devices List 
+            </h5>
+        </mat-card-title>
+        <mat-card-subtitle>
+          <button type="button" mat-button class="card-header-menu-btn button-spacing" [matMenuTriggerFor]="cardHeaderMenu">
+            This Week
+          </button>
+          <mat-menu #cardHeaderMenu="matMenu" class="card-header-menu" xPosition="before">
+            <button mat-menu-item>
+              This Day
+            </button>
+            <button mat-menu-item>
+              This Week
+            </button>
+            <button mat-menu-item>
+              This Month
+            </button>
+            <button mat-menu-item>
+              This Year
+            </button>
+          </mat-menu>
+          <button mat-fab extended color="primary" class="apply-policy-btn">
+            sync
+          </button>
+        </mat-card-subtitle>
+        
+    </mat-card-header>
+    <mat-card-content>
+        <div class="recent-orders-table">
+            <div class="table-responsive">
+              <table mat-table *ngIf="dataSource.data.length > 0" [dataSource]="dataSource" class="mat-elevation-z8">
+
+
+                    <!-- Tracking No Column -->
+                    <ng-container matColumnDef="trackingID">
+                      <th mat-header-cell *matHeaderCellDef>Own By</th>
+                      <td mat-cell *matCellDef="let element">
+                      <div class="product-info d-flex align-items-center">
+                       <div class="info">
+                         <!-- <span class="d-block fw-semibold">EnterpriseID: En233333</span> -->
+                          <div style="text-overflow: ellipsis; overflow: hidden; white-space: nowrap; display: block;">
+
+                            <span class="d-block fw-semibold" style="display: inline-block; width: 100px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">
+                             {{element?.RetailerName}}
+                            </span>
+                            
+                          </div>
+                        
+                         <span class="d-block fw-semibold">   {{element?.RetailerCode}}</span>
+                       </div>
+                     </div>
+                   </td>
+                 </ng-container>
+
+                    <!-- Product Column -->
+                    <ng-container matColumnDef="product">
+                      <th mat-header-cell *matHeaderCellDef>Device Details</th>
+                      <td mat-cell *matCellDef="let element">
+                          <div class="product-info d-flex align-items-center">
+                              <div class="info">
+                                  <span class="d-block fw-semibold brand-text">
+                                      <strong>Brand:</strong>   {{element?.Brand}}
+                                  </span>
+                                  <span class="d-block fw-semibold brand-text">
+                                      <strong>Imei No:</strong>    {{element?.ImieNo1}}                           
+                                  </span>
+                                  <span class="d-block fw-semibold brand-text">
+                                      <strong>Serial No:</strong> {{element?.SrNo}}
+                                  </span>
+                              </div>
+                          </div>
+                      </td>
+                  </ng-container>
+                  <ng-container matColumnDef="product1">
+                      <th mat-header-cell *matHeaderCellDef>Enrollment Details</th>
+                      <td mat-cell *matCellDef="let element">
+                          <div class="product-info d-flex align-items-center">
+                              <div class="info">
+                                  <span class="d-block fw-semibold brand-text">                     
+                                      <strong>EnterpriseID:</strong>  {{element?.EnterprisesId}}
+                                  </span>
+                                  <span class="d-block fw-semibold brand-text">
+                                      <strong>DeviceID:</strong>{{element?.DeviceId}}
+                                  </span>
+                                  <span class="d-block fw-semibold brand-text">
+                                      <strong>Enroll on:</strong> {{ element?.EnrollmentDate | date:'short' }}
+
+                                  </span>
+                                  <span class="d-block fw-semibold brand-text">
+                                      <strong>Report Time:</strong> {{ element?.LastReport | date:'short' }}
+                                  </span>
+                              </div>
+                          </div>
+                      </td>
+                  </ng-container>
+                  <ng-container matColumnDef="sim1">
+                      <th mat-header-cell *matHeaderCellDef>Sim Details</th>
+                      <td mat-cell *matCellDef="let element">
+                          <div class="product-info d-flex align-items-center">
+                              <div class="info">
+                                  <span class="d-block fw-semibold brand-text">
+                                      <strong>Sim1:</strong> 7021551057(ASD234)
+                                  </span>
+                                  <span class="d-block fw-semibold brand-text">
+                                      <strong>Sim2:</strong> 7021551057(ASD234)
+                                  </span>
+                              </div>
+                          </div>
+                      </td>
+                  </ng-container>
+
+
+<ng-container matColumnDef="location">
+  <th mat-header-cell *matHeaderCellDef>Location</th>
+  <td mat-cell *matCellDef="let element">
+    <div class="product-info d-flex align-items-center">
+      <div class="info">
+        <span class="d-block fw-semibold brand-text">
+          <strong>State:</strong> <span class="fw-normal"> {{ element?.State }}</span>
+        </span>
+        <span class="d-block fw-semibold brand-text">
+          <strong>District:</strong> <span class="fw-normal"> {{ element?.District}}</span>
+        </span>
+        <span class="d-block fw-semibold brand-text">
+          <strong>Taluka:</strong> <span class="fw-normal"> {{ element?.Taluka }}</span>
+        </span>
+      </div>
+    </div>
+  </td>
+</ng-container>
+<ng-container matColumnDef="customer">
+  <th mat-header-cell *matHeaderCellDef>Device Status</th>
+
+      <td mat-cell *matCellDef="let element">
+        <div class="product-info d-flex align-items-center">
+          <div class="info">
+            <!-- Show badge if DeviceStatus is "Offline" -->
+            <span class="trinta-badge fw-medium pending d-inline-block" *ngIf="element.DeviceStatus === 'Offline'">
+              {{ element?.DeviceStatus }}
+            </span>
+      
+            <!-- Show badge if status is "Delivered" -->
+            <span class="trinta-badge fw-medium delivered d-inline-block" style="color: red;" *ngIf="element.Status === 'Delivered'">
+              {{ element?.Status }}
+            </span>
+            <br>
+      
+            <!-- Show "Apply Policy" button if status is "Pending" -->
+            <button *ngIf="element.Status === 'Pending'" mat-fab extended color="primary" (click)="showAlert()">
+              Apply Policy
+            </button>
+          </div>
+        </div>
+      </td>
+      
+
+  
+</ng-container>
+
+
+<ng-container matColumnDef="status">
+  <th mat-header-cell *matHeaderCellDef>Status</th>
+  <td mat-cell *matCellDef="let element">
+    <div class="product-info d-flex align-items-center">
+      <div class="info">
+        <span class="d-block fw-semibold brand-text">
+          <strong>Command:</strong>
+        </span>
+        <span class="d-block fw-semibold brand-text">
+          <strong>Status:</strong>
+          <span 
+            [ngClass]="{
+              'text-danger': element?.ApplyPolicy === 'Locked',
+              'text-success': element?.ApplyPolicy === 'Unlocked',
+              'text-warning': !element?.ApplyPolicy
+            }"
+          >
+            {{ element?.ApplyPolicy ?? 'N/A' }}
+          </span>
+        </span>
+      </div>
+    </div>
+  </td>
+</ng-container>
+
+<!-- <ng-container matColumnDef="sim2">
+  <th mat-header-cell *matHeaderCellDef>Sim2 Details</th>
+  <td mat-cell *matCellDef="let element">
+  <div class="product-info d-flex align-items-center">
+   <div class="info">
+     <span class="d-block fw-semibold">Number: 7021551057</span>
+     <span class="d-block fw-semibold">Carrierno: ASD456567</span>
+   </div>
+ </div>
+</td>
+</ng-container> -->
+<!-- <ng-container matColumnDef="customer">
+  <th mat-header-cell *matHeaderCellDef>Device Status</th>
+  <td mat-cell *matCellDef="let element">
+  <div class="product-info d-flex align-items-center">
+   <div class="info">
+     <span class="d-block fw-semibold"> locking </span>
+     
+   </div>
+ </div>
+</td>
+</ng-container> -->
+           
+                    <!-- Customer Column -->
+                    <!-- <ng-container matColumnDef="customer">
+                        <th mat-header-cell *matHeaderCellDef>
+                            Customer
+                        </th>
+                        <td mat-cell *matCellDef="let element">
+                            {{element.customer}}
+                        </td>
+                        
+                        
+                    </ng-container> -->
+                   
+                    
+                    <!-- Price Column -->
+                  
+
+                    <!-- Quantity Column -->
+                    <!-- <ng-container matColumnDef="quantity">
+                      <th mat-header-cell *matHeaderCellDef>Date</th>
+                      <td mat-cell *matCellDef="let element">
+                      <div class="product-info d-flex align-items-center">
+                       <div class="info">
+                         <span class="d-block fw-semibold">Start:2/10/23 00:00hr</span>
+                         <span class="d-block fw-semibold">End:12/05/22 00:00hr</span>
+                       </div>
+                     </div>
+                    </td>
+                    </ng-container> -->
+
+                    <!-- Status Column -->
+                    <!-- <ng-container matColumnDef="status">
+                        <th mat-header-cell *matHeaderCellDef class="text-end pr-0">
+                            Status
+                        </th>
+                        <td mat-cell *matCellDef="let element" class="text-end pr-0">
+                            <span class="trinta-badge fw-medium pending d-inline-block" *ngIf="element.status.pending">
+                                {{element.status.pending}}
+                            </span>
+                            <span class="trinta-badge fw-medium delivered d-inline-block" *ngIf="element.status.delivered">
+                                {{element.status.delivered}}
+                            </span>
+                        </td>
+                    </ng-container> -->
+
+                    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+
+                </table>
+            </div>
+            <mat-paginator [pageSizeOptions]="[5, 10, 15]"></mat-paginator>
+        </div>
+    </mat-card-content>
+</mat-card>

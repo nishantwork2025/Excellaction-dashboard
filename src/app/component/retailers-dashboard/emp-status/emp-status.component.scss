@@ -1,0 +1,52 @@
+.trinta-card {
+    &.issues-summary-card {
+        .mat-mdc-card-content {
+            .chart {
+                margin: {
+                    bottom: -30px;
+                    left: -12px;
+                };
+            }
+        }
+    }
+}
+
+/* Max width 767px */
+@media only screen and (max-width : 767px) {}
+
+/* Min width 576px to Max width 767px */
+@media only screen and (min-width : 576px) and (max-width : 767px) {}
+
+/* Min width 768px to Max width 991px */
+@media only screen and (min-width : 768px) and (max-width : 991px) {}
+
+/* Min width 992px to Max width 1199px */
+@media only screen and (min-width : 992px) and (max-width : 1199px) {}
+
+/* Min width 1200px to Max width 1399px */
+@media only screen and (min-width: 1200px) and (max-width: 1399px) {}
+
+/* Min width 1600px */
+@media only screen and (min-width: 1600px) {}
+/* Container for the chart that enables horizontal scrolling */
+.chart-scroll-container {
+    width: 100%;
+    overflow-x: auto;               // Enable horizontal scrolling
+    overflow-y: hidden;             // Hide vertical scrollbar if any
+    -webkit-overflow-scrolling: touch; // Smooth scrolling on iOS
+    padding-bottom: 10px;           // Extra space so the scrollbar isn't cut off
+  }
+  
+  /* Ensure the chart forces horizontal overflow */
+  .chart-scroll-container apx-chart {
+    display: inline-block;          // Allows the min-width to take effect
+    width: 100%;                    // Use full width by default
+  }
+  
+  /* Media query for mobile devices */
+  @media only screen and (max-width: 767px) {
+    .chart-scroll-container apx-chart {
+      min-width: 800px;             // Force a minimum width that is wider than typical mobile viewports
+    }
+  }
+  

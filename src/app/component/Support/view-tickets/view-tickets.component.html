@@ -1,0 +1,51 @@
+<div class="container-fluid">
+  <div class="row justify-content-center">
+    
+    <!-- Customer Details Card -->
+    <div class="col-12 col-md-6">
+      <mat-card class="trinta-card user-bio-card bg-white border-none">
+        <mat-card-content>
+          <h5>Customer Details</h5>
+          <ul class="contact-info p-0 mb-0 list-unstyled">
+            <li class="text-black"><strong>Name:</strong> {{ ticketData?.CustomerName }}</li>
+            <li class="text-black"><strong>Phone:</strong> {{ ticketData?.PhoneNo }}</li>
+            <li class="text-black"><strong>State:</strong> {{ ticketData?.State }}</li>
+            <li class="text-black"><strong>District:</strong> {{ ticketData?.District }}</li>
+            <li class="text-black"><strong>Retailer Name:</strong> {{ ticketData?.RetailerName }}</li>
+            <li class="text-black"><strong>Vendor Id:</strong> {{ ticketData?.RetailerCode }}</li>
+            <li class="text-black"><strong>Issue:</strong> {{ ticketData?.Issue }}</li> 
+          </ul> 
+        </mat-card-content>
+      </mat-card>
+    </div>
+
+    <!-- Device Details Card -->
+    <div class="col-12 col-md-6">
+      <mat-card class="trinta-card user-bio-card bg-white border-none">
+        <mat-card-content>
+          <h5>Device Details</h5>
+          <ul class="contact-info p-0 mb-0 list-unstyled">
+            <li class="text-black"><strong>IMEI Number1:</strong> {{ ticketData?.ImieNo1 }}</li>
+            <li class="text-black"><strong>IMEI Number2:</strong> {{ ticketData?.ImieNo2 }}</li>
+            <li class="text-black"><strong>Serial No:</strong> {{ ticketData?.SrNo }}</li>
+            <li class="text-black"><strong>Brand:</strong> {{ ticketData?.Brand }}</li>
+            <li class="text-black"><strong>Model:</strong> {{ ticketData?.Model }}</li>
+            <li class="text-black"><strong>Enterprise:</strong> {{ ticketData?.EnterprisesId }}</li>
+            <li class="text-black"><strong>Device ID:</strong> {{ ticketData?.DeviceId }}</li>
+            <li class="text-black"><strong>Device Status:</strong> {{ ticketData?.DeviceStatus }}</li>
+            <li class="text-black"><strong>Type of Software:</strong> {{ ticketData?.TypeOfSoftware }}</li>
+            <li class="text-black"><strong>Map-Status:</strong> {{ ticketData?.MappedStatus }}</li>
+          </ul>
+         
+        </mat-card-content>
+      </mat-card>
+    </div>
+
+  </div>
+</div>
+
+
+<app-response [remarkData]="ticketData"></app-response>
+
+<button> </button>
+

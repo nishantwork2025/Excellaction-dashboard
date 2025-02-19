@@ -1,0 +1,77 @@
+
+
+   
+  
+<div class="chart-container">
+  <mat-card>
+    <mat-card-header>
+      <mat-card-title>Ticket Status by Day</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+
+      <!-- Timeframe Selection -->
+      <div class="timeframe-selection row">
+        <!-- Timeframe Selector -->
+        <div class="col-12 col-md-4">
+          <mat-form-field class="w-100">
+            <mat-label>Timeframe</mat-label>
+            <mat-select [(ngModel)]="selectedTimeframe" (selectionChange)="updateBarChartData()"default="getCurrentMonthDayWiseData()">
+              <mat-option value="year" (click)="getYearData()">This Year</mat-option>
+              <mat-option value="month" (click)="getCurrentMonthDayWiseData()">This month</mat-option>
+              <mat-option value="custom">Custom Range</mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+      
+        <!-- Custom Date Range -->
+        <div *ngIf="selectedTimeframe === 'custom'" class="col-12">
+          <div class="row">
+            <div class="col-12 col-md-4">
+              <mat-form-field class="w-100">
+                <mat-label>From Date</mat-label>
+                <input matInput [matDatepicker]="fromDatePicker" [(ngModel)]="fromDate">
+                <mat-datepicker-toggle matSuffix [for]="fromDatePicker"></mat-datepicker-toggle>
+                <mat-datepicker #fromDatePicker></mat-datepicker>
+              </mat-form-field>
+            </div>
+      
+            <div class="col-12 col-md-4">
+              <mat-form-field class="w-100">
+                <mat-label>To Date</mat-label>
+                <input matInput [matDatepicker]="toDatePicker" [(ngModel)]="toDate">
+                <mat-datepicker-toggle matSuffix [for]="toDatePicker"></mat-datepicker-toggle>
+                <mat-datepicker #toDatePicker></mat-datepicker>
+              </mat-form-field>
+            </div>
+      
+            <div class="col-12 col-md-4">
+              <button mat-raised-button class="d-block w-100 text-center" color="primary" (click)="getCustomDate()">Search</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+
+      <!-- Scrollable Chart Container -->
+      <div *ngIf="chartOptions" class="chart-scroll-container">
+        <apx-chart [series]="chartOptions.series" 
+                   [chart]="chartOptions.chart" 
+                   [xaxis]="chartOptions.xaxis"
+                   [yaxis]="chartOptions.yaxis" 
+                   [colors]="chartOptions.colors" 
+                   [title]="chartOptions.title"
+                   [tooltip]="chartOptions.tooltip">
+        </apx-chart>
+      </div>
+      
+
+    </mat-card-content>
+  </mat-card>
+</div>
+
+<!-- Loading Spinner (when chart data is being fetched)
+<div *ngIf="!chartOptions" class="spinner-overlay">
+  <mat-progress-bar mode="indeterminate"></mat-progress-bar>
+</div> -->
+
+

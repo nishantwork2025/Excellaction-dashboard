@@ -1,0 +1,168 @@
+<mat-card class="trinta-card mb-25 bg-white border-none d-block">
+    <mat-card-header>
+        <mat-card-title>
+            <h5 class="mt-0 mb-0">
+                Welcome Retailers
+            </h5>
+        </mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+        <mat-stepper #stepper>
+            <mat-step>
+                <ng-template matStepLabel>Welcome Call</ng-template>
+                
+                <form>
+                    <div class="row">
+                        <div class="col-lg-6 col-md-6 col-sm-6">
+                            <div class="mb-20">
+                                <label class="main-label d-block lh-1 text-black mb-10">First Name</label>
+                                <mat-form-field>
+                                    <i-feather name="user"></i-feather>
+                                    <mat-label>Enter first name</mat-label>
+                                    <input matInput placeholder="E.g. Mateo">
+                                </mat-form-field>
+                            </div>
+                        </div>
+                        <div class="col-lg-6 col-md-6 col-sm-6">
+                            <div class="mb-20">
+                                <label class="main-label d-block lh-1 text-black mb-10">Last Name</label>
+                                <mat-form-field>
+                                    <i-feather name="user"></i-feather>
+                                    <mat-label>Enter last name</mat-label>
+                                    <input matInput placeholder="E.g. Luca">
+                                </mat-form-field>
+                            </div>
+                        </div>
+                        <div class="col-lg-6 col-md-6 col-sm-6">
+                            <div class="mb-20">
+                                <label class="main-label d-block lh-1 text-black mb-10">Email Address</label>
+                                <mat-form-field>
+                                    <i-feather name="mail"></i-feather>
+                                    <mat-label>Enter email address</mat-label>
+                                    <input matInput placeholder="E.g. hello@trinta.com">
+                                </mat-form-field>
+                            </div>
+                        </div>
+                        <div class="col-lg-6 col-md-6 col-sm-6">
+                            <div class="mb-20">
+                                <label class="main-label d-block lh-1 text-black mb-10">Phone Number</label>
+                                <mat-form-field>
+                                    <i-feather name="phone"></i-feather>
+                                    <mat-label>Enter phone number</mat-label>
+                                    <input matInput placeholder="E.g. +123 452183">
+                                </mat-form-field>
+                            </div>
+                        </div>
+                        <div class="col-lg-12 col-md-12 col-sm-12">
+                            <div class="mb-20">
+                                <label class="main-label d-block lh-1 text-black mb-10">Address</label>
+                                <mat-form-field>
+                                    <i-feather name="map-pin"></i-feather>
+                                    <mat-label>Enter address</mat-label>
+                                    <input matInput placeholder="E.g. Amsterdam">
+                                </mat-form-field>
+                            </div>
+                        </div>
+                        <div class="col-lg-12 col-md-12 col-sm-12">
+                            <div class="mb-20">
+                                <label class="main-label d-block lh-1 text-black mb-10">States</label>
+                                <mat-form-field>
+                                    <i-feather name="map"></i-feather>
+                                    <mat-label>Enter States</mat-label>
+                                    <input matInput placeholder="E.g. Netherlands">
+                                </mat-form-field>
+                            </div>
+                        </div>
+                        <div class="col-lg-12 col-md-12 col-sm-12">
+                            <div class="mb-20">
+                                <label class="main-label d-block lh-1 text-black mb-10">Date of Birth</label>
+                                <mat-form-field>
+                                    <i-feather name="calendar"></i-feather>
+                                    <mat-label>Enter your date of birth</mat-label>
+                                    <input matInput [matDatepicker]="picker" placeholder="Select your date of birth">
+                                    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                                    <mat-datepicker #picker></mat-datepicker>
+                                </mat-form-field>
+                            </div>
+                        </div>
+                    </div>
+                    <div>
+                        <button mat-flat-button matStepperNext color="primary">Next</button>
+                    </div>
+                </form>
+            </mat-step>
+            <mat-step>
+                <ng-template matStepLabel>What'sapp Group</ng-template>
+                <form>
+                    <div class="row">
+                      <div class="col-lg-12 col-md-12 col-sm-12">
+                        <mat-radio-group [(ngModel)]="enquiryStatus" name="enquiryStatus">
+                          <mat-radio-button value="yes" (click)="setEnquiryStatus('yes')">Yes</mat-radio-button>
+                          <mat-radio-button value="no" (click)="setEnquiryStatus('no')" [class.selected-no]="enquiryStatus === 'no'">No</mat-radio-button>
+                        </mat-radio-group>
+                      </div>
+                  
+                      <div class="col-lg-12 col-md-12 col-sm-12" *ngIf="enquiryStatus === 'no'">
+                        <label class="main-label d-block lh-1 text-black mb-10">When should we connect for training?</label>
+                        <mat-form-field>
+                          <mat-label>Choose date and time</mat-label>
+                          <input matInput [matDatepicker]="picker" placeholder="Select Date" name="trainingDate">
+                          <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                          <mat-datepicker #picker></mat-datepicker>
+                        </mat-form-field>
+                      </div>
+                    </div>
+                  </form>
+                  
+                
+            </mat-step>
+            <mat-step>
+                <ng-template matStepLabel>Tranning Call</ng-template>
+                <form (ngSubmit)="onSubmit()">
+                    <div class="row">
+                      <!-- Enquiry Status -->
+                      <div class="col-lg-12 col-md-12 col-sm-12">
+                        <div class="mb-20">
+                          <label class="main-label d-block lh-1 text-black mb-10">Retailer Enquiry Completed?</label>
+                          <mat-radio-group [(ngModel)]="enquiryStatus" name="enquiryStatus">
+                            <mat-radio-button value="yes">Yes</mat-radio-button>
+                            <mat-radio-button value="no">No</mat-radio-button>
+                          </mat-radio-group>
+                        </div>
+                      </div>
+                  
+                      <!-- Date and Time for Training (visible only if 'No' is selected) -->
+                      <div class="col-lg-12 col-md-12 col-sm-12" *ngIf="enquiryStatus === 'no'">
+                        <div class="mb-20">
+                          <label class="main-label d-block lh-1 text-black mb-10">Select Date and Time for Training</label>
+                          <mat-form-field>
+                            <input matInput [matDatepicker]="picker" placeholder="Select Date">
+                            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                            <mat-datepicker #picker></mat-datepicker>
+                          </mat-form-field>
+                          <mat-form-field>
+                            <input matInput type="time" placeholder="Select Time">
+                          </mat-form-field>
+                        </div>
+                      </div>
+                    </div>
+                  
+                    <div>
+                      <button mat-flat-button color="primary" type="submit">Submit</button>
+                    </div>
+                  </form>
+                  
+                  
+                
+            </mat-step>
+            <mat-step>
+                <ng-template matStepLabel>Step 4</ng-template>
+                <p>You are now done.</p>
+                <div>
+                    <button mat-flat-button color="primary" class="mr-15" matStepperPrevious>Back</button>
+                    <button mat-flat-button color="warn" (click)="stepper.reset()">Reset</button>
+                </div>
+            </mat-step>
+        </mat-stepper>
+    </mat-card-content>
+</mat-card>

@@ -1,0 +1,259 @@
+.trinta-card {
+    &.recent-orders-card {
+        .recent-orders-table {
+            .mat-mdc-table {
+                width: 100%;
+                overflow: hidden;
+                background-color: transparent;
+
+                .mat-mdc-header-row {
+                    height: auto;
+                    line-height: initial;
+                    letter-spacing: 0.14px;
+                    color: var(--darkColor);
+                    background: transparent;
+                    font: {
+                        weight: 500;
+                        size: var(--fontSize);
+                        family: var(--fontFamily);
+                    };
+                    .mat-mdc-header-cell {
+                        border: none;
+                        overflow: unset;
+                        text-align: start;
+                        white-space: nowrap;
+                        line-height: initial;
+                        padding: 0 15px 15px;
+                        letter-spacing: normal;
+                        background: transparent;
+                        border-bottom: 2px solid #edeff5;
+                    }
+                }
+                .mat-mdc-row, .mdc-data-table__content {
+                    line-height: initial;
+                    background: transparent;
+                    font: {
+                        weight: normal;
+                        size: var(--fontSize);
+                        family: var(--fontFamily);
+                    };
+                }
+                .mat-mdc-row {
+                    height: auto;
+                    color: var(--blackColor);
+                }
+                .mat-mdc-cell {
+                    border: none;
+                    padding: 15px;
+                    overflow: hidden;
+                    text-align: start;
+                    white-space: nowrap;
+                    line-height: initial;
+                    letter-spacing: 0.14px;
+                    background: transparent;
+                    border-bottom: 1px solid #edeff5;
+
+                    .product-info {
+                        .image {
+                            width: 52px;
+                            margin-right: 16px;
+                            border-radius: 6px;
+
+                            img {
+                                border-radius: 6px;
+                            }
+                        }
+                        .info {
+                            a {
+                                margin-bottom: 7px;
+                                font: {
+                                    size: 15px;
+                                    family: var(--headingFontFamily);
+                                };
+                            }
+                        }
+                    }
+                    .trinta-badge {
+                        font-size: 12px;
+                        border-radius: 2px;
+                        padding: 1.5px 7px;
+                        letter-spacing: 1px;
+                        color: var(--primaryColor);
+                        background: rgba(96, 91, 255, 0.10);
+
+                        &.delivered {
+                            color: #00b69b;
+                            background: rgba(0, 182, 155, 0.10);
+                        }
+                    }
+                }
+            }
+            .mat-mdc-paginator {
+                padding-top: 15px;
+            }
+        }
+    }
+}
+
+/* Max width 767px */
+@media only screen and (max-width : 767px) {
+
+    .trinta-card {
+        &.recent-orders-card {
+            .recent-orders-table {
+                .mat-mdc-table {
+                    .mat-mdc-header-row {
+                        font-size: 13px;
+                    }
+                    .mat-mdc-row, .mdc-data-table__content {
+                        font-size: 13px;
+                    }
+                    .mat-mdc-cell {
+                        .product-info {
+                            .image {
+                                width: 50px;
+                                margin-right: 12px;
+                            }
+                            .info {
+                                a {
+                                    margin-bottom: 7px;
+                                    font-size: 13px;
+                                }
+                            }
+                        }
+                        .trinta-badge {
+                            font-size: 11px;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+}
+
+/* Min width 576px to Max width 767px */
+@media only screen and (min-width : 576px) and (max-width : 767px) {}
+
+/* Min width 768px to Max width 991px */
+@media only screen and (min-width : 768px) and (max-width : 991px) {
+
+    .trinta-card {
+        &.recent-orders-card {
+            .recent-orders-table {
+                .mat-mdc-table {
+                    .mat-mdc-cell {
+                        .product-info {
+                            .image {
+                                margin-right: 15px;
+                            }
+                            .info {
+                                a {
+                                    font-size: 14px;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+}
+
+/* Min width 992px to Max width 1199px */
+@media only screen and (min-width : 992px) and (max-width : 1199px) {}
+
+/* Min width 1200px to Max width 1399px */
+@media only screen and (min-width: 1200px) and (max-width: 1399px) {}
+
+/* Min width 1600px */
+@media only screen and (min-width: 1600px) {}
+
+
+/* Add to your component's SCSS file or global stylesheet */
+
+/* Common Flexbox Styling */
+.d-flex {
+    display: flex;
+    justify-content: space-between;
+    gap: 15px; /* Provides spacing between columns */
+    flex-wrap: wrap; /* Allows items to wrap on smaller screens */
+}
+
+/* Desktop: 3 Equal Columns */
+.col-3 {
+    flex: 1 1 1 33.33%; /* Distributes space equally on larger screens */
+}
+
+/* Mobile: Full Width */
+@media (max-width: 768px) {
+    .d-flex {
+        // flex-direction: column; /* Stack items in a column */
+        gap: 10px; /* Reduce gap for a compact mobile view */
+    }
+    .col-3 {
+        flex: 1  100%; /* Full width on mobile */
+    }
+}
+
+/* Input Search Field */
+.input-search {
+    width: 100%; /* Takes full width of container */
+    padding: 10px; /* Comfortable padding */
+    border: 1px solid #ccc; /* Consistent with Material form field */
+    border-radius: 4px; /* Rounded edges */
+}
+
+/* Search Box */
+.search-box {
+    display: flex;
+    align-items: center;
+    width: 100%; /* Ensure full width */
+    position: relative; /* Ensures button positioni ng remains intact */
+}
+
+/* Search Button */
+.search-btn {
+    padding: 0;
+    position: absolute;
+    right: 10px; /* Adjust positioning inside input */
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+}
+
+/* Feather Icon Adjustments */
+.search-btn i-feather {
+    font-size: 18px; /* Adjust the icon size */
+}
+
+/* Button Full Width on Mobile */
+@media (max-width: 768px) {
+    .search-btn {
+        right: 5px; /* Adjusted positioning for smaller screens */
+    }
+    .col-2 {
+        flex: 1  100%; /* Full width on mobile */
+    }
+}
+
+
+.brand-text strong {
+    // color: #; /* Blue shade (Bootstrap Primary) */
+    font-weight: bold;
+    color: #333; /* Dark gray for better readability */
+    font-size: 14px; /* Adjust size */
+  }
+  
+  
+  
+
+  .button-spacing {
+    margin-right: 10px;
+  }
+  
+  .apply-policy-btn {
+    margin-left: 20px;
+  }
+  

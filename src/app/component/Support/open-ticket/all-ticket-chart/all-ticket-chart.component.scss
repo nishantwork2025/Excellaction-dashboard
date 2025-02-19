@@ -1,0 +1,150 @@
+.trinta-card {
+    &.issues-summary-card {
+        .mat-mdc-card-content {
+            .chart {
+                margin: {
+                    bottom: -30px;
+                    left: -12px;
+                };
+            }
+        }
+    }
+}
+/* Adjust the layout of the date inputs */
+mat-form-field {
+  width: 100%;
+}
+.timeframe-selection {
+  display: flex;
+  flex-wrap: wrap; /* Allows wrapping to next line on smaller screens */
+  gap: 20px; /* Space between form elements */
+  max-width: 100%; /* Make the form responsive */
+  margin: 0 auto; /* Center the content */
+  padding: 10px;
+}
+
+.flex-item {
+  flex: 1; /* Allow form elements to grow */
+  min-width: 200px; /* Ensure that they don't shrink too much on small screens */
+}
+
+.custom-range {
+  display: flex;
+  gap: 20px; /* Space between the date inputs and the button */
+  width: 100%; /* Take up full width when custom range is selected */
+}
+
+button.flex-item {
+  min-width: 150px; /* Minimum width for the button */
+}
+
+mat-form-field {
+  width: 100%; /* Ensure form fields take full width */
+}
+
+mat-select {
+  margin-right: 20px; /* Space between select and input fields */
+}
+
+mat-datepicker-toggle {
+  cursor: pointer;
+}
+
+
+.full-width {
+  width: 100%;
+}
+
+.custom-range {
+  display: flex;
+  flex-direction: column;
+  gap: 10px; /* Add space between the date inputs */
+}
+
+button.full-width {
+  margin-top: 10px; /* Add some space above the button */
+}
+
+mat-form-field {
+  width: 100%; /* Ensure form fields take full width */
+}
+
+mat-select {
+  margin-bottom: 15px; /* Space between select and input fields */
+}
+
+mat-datepicker-toggle {
+  cursor: pointer;
+}
+
+
+/* Container to allow horizontal scrolling */
+.chart-scroll-container {
+  width: 100%;
+  overflow-x: auto;               // Enables horizontal scrolling
+  overflow-y: hidden;             // Prevents vertical scrolling
+  -webkit-overflow-scrolling: touch; // Smooth scrolling on iOS
+  padding-bottom: 10px;           // Space to ensure the scrollbar is visible
+}
+
+/* Ensure the chart forces horizontal overflow when needed */
+.chart-scroll-container apx-chart {
+  display: inline-block;          // Required so that min-width works correctly
+  width: 100%;                    // Full width by default on larger screens
+}
+
+/* On mobile screens, force a minimum width so that the chart overflows */
+@media only screen and (max-width: 767px) {
+  .chart-scroll-container apx-chart {
+    min-width: 800px;             // Adjust this value based on your design needs
+  }
+}
+
+
+/* For spinner overlay */
+.spinner-overlay {
+  width: 100%;
+  text-align: center;
+  margin-top: 20px;
+}
+
+
+/* Max width 767px */
+@media only screen and (max-width : 767px) {}
+
+/* Min width 576px to Max width 767px */
+@media only screen and (min-width : 576px) and (max-width : 767px) {}
+
+/* Min width 768px to Max width 991px */
+@media only screen and (min-width : 768px) and (max-width : 991px) {}
+
+/* Min width 992px to Max width 1199px */
+@media only screen and (min-width : 992px) and (max-width : 1199px) {}
+
+/* Min width 1200px to Max width 1399px */
+@media only screen and (min-width: 1200px) and (max-width: 1399px) {}
+
+/* Min width 1600px */
+@media only screen and (min-width: 1600px) {}
+/* Container for the chart that enables horizontal scrolling */
+.chart-scroll-container {
+    width: 100%;
+    overflow-x: auto;               // Enable horizontal scrolling
+    overflow-y: hidden;             // Hide vertical scrollbar if any
+    -webkit-overflow-scrolling: touch; // Smooth scrolling on iOS
+    padding-bottom: 10px;           // Extra space so the scrollbar isn't cut off
+  }
+  
+  /* Ensure the chart forces horizontal overflow */
+  .chart-scroll-container apx-chart {
+    display: inline-block;          // Allows the min-width to take effect
+    width: 100%;                    // Use full width by default
+  }
+  
+  /* Media query for mobile devices */
+  @media only screen and (max-width: 767px) {
+    .chart-scroll-container apx-chart {
+      min-width: 800px;             // Force a minimum width that is wider than typical mobile viewports
+    }
+  }
+  

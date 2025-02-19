@@ -1,0 +1,98 @@
+<mat-card class="trinta-card mb-25 bg-white border-none d-block">
+  <mat-card-header>
+    <mat-card-title>
+      <h5 class="mt-0 mb-0">Hello !</h5>
+    </mat-card-title>
+  </mat-card-header>
+</mat-card>
+
+<div class="row">
+  <!-- All Retailers Card -->
+  <div class="col-xxxl-2 col-sm-6 col-md-3">
+    <mat-card class="trinta-card pm-stat-card mb-25 bg-white border-none d-block text-center">
+      <mat-card-content>
+        <div class="icon d-flex align-items-center justify-content-center ml-auto mr-auto">
+          <i-feather name="layers"></i-feather>
+        </div>
+        <span class="d-block text-gray">
+          <a href="/all-retailers"> All Retailers </a>
+        </span>
+        <h5>{{allRetailersCount}}</h5> <!-- Display dynamic count -->
+      </mat-card-content>
+    </mat-card>
+  </div>
+
+  <!-- All Tickets Card -->
+  <div class="col-xxxl-2 col-sm-6 col-md-3">
+    <mat-card class="trinta-card pm-stat-card mb-25 bg-white border-none d-block text-center">
+      <mat-card-content>
+        <div class="icon d-flex align-items-center justify-content-center ml-auto mr-auto">
+          <i-feather name="pie-chart"></i-feather>
+        </div>
+        <span class="d-block text-gray">
+          <a href="/open-ticket">All Tickets</a>
+        </span>
+        <h5>{{allTicketsCount}}</h5> <!-- Display dynamic count -->
+      </mat-card-content>
+    </mat-card>
+  </div>
+
+  <!-- Activated Tickets Card -->
+  <div class="col-xxxl-2 col-sm-6 col-md-3">
+    <mat-card class="trinta-card pm-stat-card mb-25 bg-white border-none d-block text-center">
+      <mat-card-content>
+        <div class="icon d-flex align-items-center justify-content-center ml-auto mr-auto">
+          <i-feather name="clock"></i-feather>
+        </div>
+        <span class="d-block text-gray">
+          <a href="/static">Activated</a>
+        </span>
+        <h5>{{activatedCount}}</h5> <!-- Display dynamic count -->
+      </mat-card-content>
+    </mat-card>
+  </div>
+
+  <!-- Total Open Tickets Card -->
+  <div class="col-xxxl-2 col-sm-6 col-md-3">
+    <mat-card class="trinta-card pm-stat-card mb-25 bg-white border-none d-block text-center">
+      <mat-card-content>
+        <div class="icon d-flex align-items-center justify-content-center ml-auto mr-auto">
+          <i-feather name="clock"></i-feather>
+        </div>
+        <span class="d-block text-gray">
+          <a href="/static">Total Open Ticket</a>
+        </span>
+        <h5>{{openTicketsCount}}</h5> <!-- Display dynamic count -->
+      </mat-card-content>
+    </mat-card>
+  </div>
+</div>
+
+
+<div class="row">
+
+<div class="col-xxxl-4 col-lg-6 col-md-12">
+ <app-retailer-by-district/>
+</div>
+  <div class="col-xxxl-4 col-lg-6 col-md-12">
+   <!-- <app-issues-summary/> -->
+    <app-emp-status/>
+  </div>
+
+  <!-- <div class="col-xxxl-4 col-lg-6 col-md-12">
+
+     Avg. Response Time 
+    <app-average-response-time />
+    
+</div> -->
+<div class="col-xxxl-4 col-lg-6 col-md-12">
+    
+    <!-- Support Status -->
+    <app-support-status />
+
+</div>
+</div>
+<div class="col-xxxl-4 col-lg-6 col-md-12">
+
+  <app-all-ticket-chart/>
+</div>

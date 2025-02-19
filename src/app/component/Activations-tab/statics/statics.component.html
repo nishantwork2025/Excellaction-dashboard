@@ -1,0 +1,35 @@
+<mat-card class="trinta-card mb-25 bg-white border-none d-block">
+    <mat-card-header>
+      <mat-card-title>
+        <h5 class="mt-0 mb-0">
+          <!-- Optionally include a title here if needed -->
+        </h5>
+      </mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <!-- Wrap the chart inside the scroll container -->
+   
+      
+      <div class="chart-container">
+        <mat-card>
+          <mat-card-header>
+            <mat-card-title>Smart Key vs Regular Key by State</mat-card-title>
+          </mat-card-header>
+          <mat-card-content>
+            <div *ngIf="keyTypeChartOptions" class="chart-scroll-container">
+              <apx-chart [series]="keyTypeChartOptions.series" 
+                         [chart]="keyTypeChartOptions.chart" 
+                         [xaxis]="keyTypeChartOptions.xaxis"
+                         [yaxis]="keyTypeChartOptions.yaxis" 
+                         [title]="keyTypeChartOptions.title"
+                         [colors]="keyTypeChartOptions.colors">
+              </apx-chart>
+            </div>
+          </mat-card-content>
+        </mat-card>
+      </div>
+      
+    </mat-card-content>
+  </mat-card>
+<app-daily-list-chart></app-daily-list-chart>
+  

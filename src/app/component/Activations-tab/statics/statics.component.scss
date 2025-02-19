@@ -1,0 +1,31 @@
+// .mat-mdc-card-content>:last-child {
+//     &:not(.mat-mdc-card-footer) {
+//         margin-bottom: -20px;
+//     }
+// }
+
+
+
+
+/* Container to allow horizontal scrolling */
+.chart-scroll-container {
+    width: 100%;
+    overflow-x: auto;               // Enables horizontal scrolling
+    overflow-y: hidden;             // Prevents vertical scrolling
+    -webkit-overflow-scrolling: touch; // Smooth scrolling on iOS
+    padding-bottom: 10px;           // Space to ensure the scrollbar is visible
+  }
+  
+  /* Ensure the chart forces horizontal overflow when needed */
+  .chart-scroll-container apx-chart {
+    display: inline-block;          // Required so that min-width works correctly
+    width: 100%;                    // Full width by default on larger screens
+  }
+  
+  /* On mobile screens, force a minimum width so that the chart overflows */
+  @media only screen and (max-width: 767px) {
+    .chart-scroll-container apx-chart {
+      min-width: 800px;             // Adjust this value based on your design needs
+    }
+  }
+  

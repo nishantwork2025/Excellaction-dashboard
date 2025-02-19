@@ -1,0 +1,22 @@
+<mat-card class="trinta-card avg-response-time-card mb-25 bg-white border-none d-block">
+    <mat-card-header>
+        <mat-card-title>
+            <h5 class="mt-0 mb-0">
+                Avg. Ticket Resolution Time
+            </h5>
+        </mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+        <div class="chart">
+            <apx-chart
+                [series]="chartOptions.series!"
+                [chart]="chartOptions.chart!"
+                [xaxis]="chartOptions.xaxis!"
+                [yaxis]="chartOptions.yaxis!"
+                [colors]="chartOptions.colors!"
+                [dataLabels]="chartOptions.dataLabels!"
+                [tooltip]="chartOptions.tooltip!"
+            ></apx-chart>
+        </div>
+    </mat-card-content>
+</mat-card>
