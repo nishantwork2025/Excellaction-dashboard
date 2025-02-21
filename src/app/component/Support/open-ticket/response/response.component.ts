@@ -8,7 +8,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatRadioModule } from '@angular/material/radio';
 import { MatSelectModule } from '@angular/material/select';
-import { RouterLink } from '@angular/router';
+import { ActivatedRoute, RouterLink } from '@angular/router';
 import { FileUploadModule } from '@iplab/ngx-file-upload';
 import { NgxEditorModule } from 'ngx-editor';
 import { FeathericonsModule } from '../../../../icons/feathericons/feathericons.module';
@@ -18,7 +18,7 @@ import { DataServiceService } from '../../../../data-service.service';
 @Component({
   selector: 'app-response',
   standalone: true,
-    imports: [
+  imports: [
     MatCardModule,
     FeathericonsModule,
     MatCardModule,
@@ -41,37 +41,49 @@ import { DataServiceService } from '../../../../data-service.service';
 export class ResponseComponent implements OnInit {
 
   @Input() remarkData: any; // Receives data from the parent component
-  addForm:FormGroup;
+  addForm: FormGroup;
 
-  constructor(private fb: FormBuilder, private dataService: DataServiceService){
+  constructor(private fb: FormBuilder, private dataService: DataServiceService, private route: ActivatedRoute) {
     this.addForm = this.fb.group({
       Remark: new FormControl(''),
       CreatedByName: new FormControl(1),
       CreatedByID: new FormControl(1),
       createddate: new FormControl(1),
-      
+
     })
   }
 
   ngOnInit(): void {
-    //Called after the constructor, initializing input properties, and the first call to ngOnChanges.
-    //Add 'implements OnInit' to the class.
-    console.log("oninitd", this.remarkData)
-    this.addForm.patchValue({
-      CreatedByName: this.remarkData.CreatedByName,
-      CreatedByID: this.remarkData.CreatedByID,
-      created_at: this.remarkData.created_at,
 
-    })
-    
-    
+    const ticketId = this.route.snapshot.params['id'];
+    if (ticketId) {
+      console.log("ticketId", ticketId)
+      this.getTicketData(ticketId)
+
+    }
+
   }
 
-  onSubmit(){
+  getTicketData(ticketId: any) {
+    this.dataService.get<any>('tickets/'+ ticketId).subscribe(response => {
+      console.log('response id data', response.data)
+      this.remarkData = response
+      console.log("oninitd", this.remarkData)
+      this.addForm.patchValue({
+        CreatedByName: this.remarkData.CreatedByName,
+        CreatedByID: this.remarkData.CreatedByID,
+        created_at: this.remarkData.created_at,
+      })
+
+    })
+  }
+
+  onSubmit() {
     console.log('thisva.lue', this.addForm.value)
 
-    this.dataService.put('tickets', this.remarkData.id,  this.addForm.value).subscribe(response=>{
+    this.dataService.put('tickets', this.remarkData.id, this.addForm.value).subscribe(response => {
       console.log('response', response)
+      window.location.reload()
     })
   }
 

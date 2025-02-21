@@ -16,6 +16,7 @@ import { Editor } from 'ngx-editor'; // Import Editor from ngx-editor
 import { ResponseComponent } from '../open-ticket/response/response.component';
 import { CommonModule } from '@angular/common';
 import { response } from 'express';
+import { DataServiceService } from '../../../data-service.service';
 
 @Component({
   selector: 'app-view-tickets',
@@ -44,7 +45,7 @@ export class ViewTicketsComponent implements OnInit {
   html: string;
  ticketData: any = '';
 
-  constructor(private route:ActivatedRoute) {
+  constructor(private route:ActivatedRoute, private dataService: DataServiceService) {
     // Initialize the editor
     // this.editor = new Editor();
 
@@ -66,6 +67,9 @@ export class ViewTicketsComponent implements OnInit {
       console.log('okay done', navigation);
       const ticketId = this.route.snapshot.params['id'];
       console.log("ticketId", ticketId)
+      this.dataService.get<any>('tickets', ticketId).subscribe(response =>{
+        console.log('response id data', response)
+      })
       this.ticketData = navigation.data;
     }
   }

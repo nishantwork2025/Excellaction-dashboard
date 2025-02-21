@@ -478,7 +478,7 @@ export type ChartOptions = {
 export class AllTicketChartComponent implements OnInit {
   @ViewChild('chart') chart: ChartComponent;
   chartOptions: any;
-  public selectedTimeframe: string = 'month';
+  public selectedTimeframe: string = 'year';
   public fromDate: Date;
   public toDate: Date;
 
@@ -488,6 +488,7 @@ export class AllTicketChartComponent implements OnInit {
 
   ngOnInit(): void {
     this.fetchPieChartData();
+    this.updateBarChartData()
   }
 
   fetchPieChartData(): void {

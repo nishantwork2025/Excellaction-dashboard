@@ -15,7 +15,7 @@
         <div class="col-12 col-md-4">
           <mat-form-field class="w-100">
             <mat-label>Timeframe</mat-label>
-            <mat-select [(ngModel)]="selectedTimeframe" (selectionChange)="updateBarChartData()"default="getCurrentMonthDayWiseData()">
+            <mat-select [(ngModel)]="selectedTimeframe" (selectionChange)="updateBarChartData()" default="getYearData()">
               <mat-option value="year" (click)="getYearData()">This Year</mat-option>
               <mat-option value="month" (click)="getCurrentMonthDayWiseData()">This month</mat-option>
               <mat-option value="custom">Custom Range</mat-option>
